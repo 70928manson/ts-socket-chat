@@ -19,6 +19,7 @@
 5. user從瀏覽器端(client端)對Node Server請求頁面
 
 local:host:3000/main
+
 local:host:3000/chatroom
 
 dev.ts -> 重定向到main/main.html跟chatRoom/chatRoom.html
