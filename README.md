@@ -22,4 +22,5 @@ local:host:3000/main
 local:host:3000/chatroom
 
 dev.ts -> 重定向到main/main.html跟chatRoom/chatRoom.html
+
 prod.ts -> 直接返回main/main.html跟chatRoom/chatRoom.html
