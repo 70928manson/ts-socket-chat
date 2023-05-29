@@ -25,3 +25,14 @@ local:host:3000/chatroom
 dev.ts -> 重定向到main/main.html跟chatRoom/chatRoom.html
 
 prod.ts -> 直接返回main/main.html跟chatRoom/chatRoom.html
+
+# 前端頁面 即時更新內容
+1. 使用者上下線狀態
+2. 聊天室
+
+輪詢: setInterval -> 每幾秒拉一次api內容 -> 更新頁面
+
+問題: 聊天室若要即時更新會發送大量api請求 
+
+websocket: 前後端的連線除非有一方斷開，否則就會一直存在
+
