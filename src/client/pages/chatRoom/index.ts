@@ -12,12 +12,24 @@ if (!userName || !roomName) {
     location.href = '/main/main.html';
 }
 
-
 //1. 建立連接 -> node server
 const clientIo = io();
 
+const textInput = document.getElementById("textInput") as HTMLInputElement;
+const submitBtn = document.getElementById("submitBtn") as HTMLButtonElement;
+
+submitBtn.addEventListener('click', () => {
+    const textValue = textInput.value;
+
+    //推送textValue給後端，chat event
+    clientIo.emit('chat', textValue);
+})
+
 //頻道
 clientIo.on('join', (msg) => {
-    console.log('msg', msg);
-    
+    ;    
+})
+
+clientIo.on('chat', (msg) => {
+    console.log('client', msg);
 })

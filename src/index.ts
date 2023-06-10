@@ -6,6 +6,7 @@ import http from 'http';
 
 import { name } from "@/utils";
 
+//這裡是後端
 const port = 3000;
 const app = express();
 const server = http.createServer(app);
@@ -13,7 +14,13 @@ const io = new Server(server);
 
 //監測連接 (chatRoom/index.ts)
 io.on('connection', (socket) => {
-  socket.emit('join', 'welcome')
+  socket.emit('join', 'welcome');
+
+  //監聽頻道
+  socket.on('chat', (msg) => {
+    //把輸入框的訊息渲染到訊息介面
+    io.emit('chat', msg)
+  })
 })
 
 // 執行npm run dev本地開發 or 執行npm run start部署後啟動線上伺服器
