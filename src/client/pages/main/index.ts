@@ -1,13 +1,13 @@
 import "./index.css";
 
-//下斷點 as 判斷
-const nameInput = document.getElementById("nameInput") as HTMLInputElement;
-const roomSelect = document.getElementById("roomSelect") as HTMLSelectElement;
-const startBtn = document.getElementById("startBtn") as HTMLButtonElement;
+
+const nameInput = document.getElementById('nameInput') as HTMLInputElement
+const roomSelect = document.getElementById('roomSelect') as HTMLSelectElement
+const startBtn = document.getElementById('startBtn') as HTMLButtonElement
 
 startBtn.addEventListener('click', () => {
-    const userName = nameInput.value;
-    const roomName = roomSelect.value;
+  const userName = nameInput.value
+  const roomName = roomSelect.value
 
-    location.href = `/chatRoom/chatRoom.html?user_name=${userName}&room_name=${roomName}`
+  location.href = `/chatRoom/chatRoom.html?user_name=${userName}&room_name=${roomName}`
 })

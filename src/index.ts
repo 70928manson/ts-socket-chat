@@ -1,19 +1,18 @@
 import devServer from "@/server/dev";
 import prodServer from "@/server/prod";
 import express from "express";
-import { Server } from 'socket.io';
-import http from 'http';
+import { Server } from 'socket.io'
+import http from 'http'
 import UserService from "@/service/UserService";
 import moment from 'moment';
 
-//這裡是後端 server
 const port = 3000;
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
+const server = http.createServer(app)
+const io = new Server(server)
 const userService = new UserService()
 
-//監測連接 (chatRoom/index.ts) 監測相應行為並執行程式發送給前端
+// 監測連接
 io.on('connection', (socket) => {
 
   socket.emit('userID', socket.id)
@@ -29,12 +28,10 @@ io.on('connection', (socket) => {
     socket.broadcast.to(userData.roomName).emit('join', `${userName} 加入了 ${roomName} 聊天室`)
   })
 
-  //監聽頻道
   socket.on('chat', (msg) => {  
     const time = moment.utc() 
     const userData = userService.getUser(socket.id)
     if (userData) {
-      //把輸入框的訊息渲染到訊息介面
       io.to(userData.roomName).emit('chat', { userData, msg, time })
     }
   })
@@ -50,7 +47,6 @@ io.on('connection', (socket) => {
 
 })
 
-
 // 執行npm run dev本地開發 or 執行npm run start部署後啟動線上伺服器
 if (process.env.NODE_ENV === "development") {
   devServer(app);
@@ -58,6 +54,6 @@ if (process.env.NODE_ENV === "development") {
   prodServer(app);
 }
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`The application is running on port ${port}.`);
 });
