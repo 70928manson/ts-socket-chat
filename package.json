@@ -46,6 +46,7 @@
     "webpack-hot-middleware": "^2.25.1"
   },
   "dependencies": {
+    "moment": "^2.29.4",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1"
   }
