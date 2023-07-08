@@ -58,8 +58,6 @@ if (process.env.NODE_ENV === "development") {
   prodServer(app);
 }
 
-console.log("server side", name);
-
 app.listen(port, () => {
   console.log(`The application is running on port ${port}.`);
 });
